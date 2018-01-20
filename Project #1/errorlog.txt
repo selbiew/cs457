@@ -1,0 +1,4 @@
+
+0(26) : error C1008: undefined variable "result"
+0(28) : error C1008: undefined variable "result"
+

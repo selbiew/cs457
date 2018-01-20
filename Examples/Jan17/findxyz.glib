@@ -1,0 +1,15 @@
+##OpenGL GLIB
+Perspective 70
+LookAt  0 0 2  0 0 0  0 1 0
+
+Vertex findxyz.vert
+Fragment findxyz.frag
+Program FindXYZ  		uX <-5. 0. 5.>				\
+					uY <-5. 0. 5.>				\
+					uZ <-5. 0. 5.>				\
+					uTol <0. 1. 10.>
+
+Color 1. 1. 1.
+#Sphere 1. 60 60
+Obj giraffe.obj
+ 
