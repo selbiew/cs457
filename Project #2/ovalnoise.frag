@@ -12,11 +12,12 @@ in vec2 vST;
 in vec3 vMCposition;
 in float vLightIntensity;
 
-const vec4 WHITE = vec4( 1., 1., 1., 1. );
 const vec4 vColor = vec4(1.0, 0.5, 0.5, 1.0);
 
 void main( )
 {
+
+	vec4 WHITE = vec4( 1., 1., 1., uAlpha );
 
 	vec3 stp = uNoiseFreq * vMCposition;
 	vec4 nv = texture(Noise3, stp);
@@ -40,4 +41,8 @@ void main( )
 	float mix_t = smoothstep(1.0 - uTol, 1.0 + uTol, result);
 	gl_FragColor = mix(vColor, WHITE, mix_t);
 	
+	if(gl_FragColor.a == 0.) 
+	{
+		discard;
+	}
 }
