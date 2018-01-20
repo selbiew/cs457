@@ -4,6 +4,9 @@ uniform float uAd;
 uniform float uBd;
 uniform float uTol;
 uniform float uAlpha;
+uniform float uNoiseAmp;
+uniform float uNoiseFreq;
+uniform sampler2D Noise2;
 
 in vec2 vST;
 in vec3 vMCposition;
@@ -15,11 +18,16 @@ const vec4 vColor = vec4(1.0, 0.5, 0.5, 1.0);
 void main( )
 {
 
+	vec2 st = uNoiseFreq * vST;
+	vec4 nv = texture(Noise2, st);
+	float sum = nv.r + nv.g + nv.b + nv.a;  //1. -> 3.
+	sum = ((sum - 1.) / 2.) * uNoiseAmp;						//0. -> 1.
+
 	float Ar = uAd / 2.0;
 	float Br = uBd / 2.0;
 	
-	float s = vST.s;
-	float t = vST.t;
+	float s = vST.s + sum;
+	float t = vST.t + sum;
 	
 	int numins = int(s / uAd);
 	int numint = int(t / uBd);
