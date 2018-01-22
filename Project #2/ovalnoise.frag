@@ -22,13 +22,13 @@ void main( )
 	vec3 stp = uNoiseFreq * vMCposition;
 	vec4 nv = texture(Noise3, stp);
 	float sum = nv.r + nv.g + nv.b + nv.a;  //1. -> 3.
-	sum = ((sum - 1.) / 2.) * uNoiseAmp;						//0. -> 1.
+	sum = (sum - 2.) * uNoiseAmp;						//0. -> 1.
 	
 	float Ar = uAd / 2.0;
 	float Br = uBd / 2.0;
 	
-	float s = vST.s + sum;
-	float t = vST.t + sum;
+	float s = vST.s;
+	float t = vST.t;
 	
 	int numins = int(s / uAd);
 	int numint = int(t / uBd);
@@ -36,7 +36,17 @@ void main( )
 	float sc = (numins * uAd) + Ar;
 	float tc = (numint * uBd) + Br;
 	
-	float result = pow(float((s - sc) / float(Ar)), 2.0) + pow(float((t - tc) / float(Br)), 2.0);
+	float dS = s - sc;
+	float dT = t - tc;
+	
+	float oD = pow((pow(dS, 2) + pow(dT, 2)), 0.5);
+	float nD = oD + sum;
+	
+	float scale = nD / oD;
+	dS *= scale;
+	dT *= scale;
+	
+	float result = pow(float((dS) / float(Ar)), 2.0) + pow(float((dT) / float(Br)), 2.0);
 	
 	float mix_t = smoothstep(1.0 - uTol, 1.0 + uTol, result);
 	gl_FragColor = mix(vColor, WHITE, mix_t);
