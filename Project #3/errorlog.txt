@@ -1,3 +1,4 @@
 
-0(52) : error C1008: undefined variable "gl_FraguColor"
+0(10) : error C0000: syntax error, unexpected identifier, expecting '{' at token "vNs"
+0(12) : error C0000: syntax error, unexpected identifier, expecting '{' at token "vLs"
 
