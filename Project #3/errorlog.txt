@@ -1,4 +1,3 @@
 
-0(10) : error C0000: syntax error, unexpected identifier, expecting '{' at token "vNs"
-0(12) : error C0000: syntax error, unexpected identifier, expecting '{' at token "vLs"
+0(18) : error C1008: undefined variable "uK"
 
