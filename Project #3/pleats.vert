@@ -17,7 +17,7 @@ void
 main( )
 {
 	float y0 = 1.0;
-	float new_z = uK * (y0 - gl_Vertex.y) * sin(2. * gl_Vertex.x * gl_Vertex.x / uP);
+	float new_z = uK * (y0 - gl_Vertex.y) * sin(2. * 3.14 * gl_Vertex.x / uP);
 	vec4 pleat_Vertex = vec4(gl_Vertex.x, gl_Vertex.y, new_z, gl_Vertex.w);
 	
 	vec4 ECposition = gl_ModelViewMatrix * gl_Vertex;

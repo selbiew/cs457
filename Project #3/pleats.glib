@@ -7,13 +7,13 @@ Vertex		pleats.vert
 Fragment	pleats.frag
 Program		Pleats										\
 				uFlat <false>							\
-				uK <0. 1. 5.>							\
-				uP <0. 3.14 6.28>						\
+				uK <0. .1 .5>							\
+				uP <0. 1.57 3.14>						\
                 uNoiseAmp <0. 0. 1.>					\
                 uNoiseFreq <0. 1. 10.>					\
-                uKa <0. 0.1 1.0>                        \
-                uKd <0. 0.6 1.0>                        \
-                uKs <0. 0.3 1.0>                        \
+                uKa <0. 0.6 1.0>                        \
+                uKd <0. 0.1 1.0>                        \
+                uKs <0. 0.1 1.0>                        \
                 uShininess <1. 10. 1000.>               \
                 uLightX <-20. 5. 20.>                   \
                 uLightY <-20. 10. 20.>                  \
