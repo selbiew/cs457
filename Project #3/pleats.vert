@@ -1,5 +1,5 @@
 #version 330 compatibility
-
+#define PI 3.14
 uniform float uK;
 uniform float uP;
 uniform float uLightX, uLightY, uLightZ;
@@ -17,12 +17,19 @@ void
 main( )
 {
 	float y0 = 1.0;
-	float new_z = uK * (y0 - gl_Vertex.y) * sin(2. * 3.14 * gl_Vertex.x / uP);
+	float new_z = uK * (y0 - gl_Vertex.y) * sin(2. * PI * gl_Vertex.x / uP);
+	
+	float dzdx = uK * (y0-gl_Vertex.y) * (2.*PI/uP) * cos( 2.*PI*gl_Vertex.x/uP );
+	float dzdy = -uK * sin( 2.*PI*gl_Vertex.x/uP );
+	vec3 Tx = vec3(1., 0., dzdx );
+	vec3 Ty = vec3(0., 1., dzdy );
+	vec3 normal = normalize(cross(Tx, Ty));
+	
 	vec4 pleat_Vertex = vec4(gl_Vertex.x, gl_Vertex.y, new_z, gl_Vertex.w);
 	
 	vec4 ECposition = gl_ModelViewMatrix * gl_Vertex;
 	
-	vNf = normalize( gl_NormalMatrix * gl_Normal ); 	// surface normal vector
+	vNf = normalize( gl_NormalMatrix * normal ); 	// surface normal vector
 	
 	vNs = vNf;
 	vLf = eyeLightPosition - ECposition.xyz; 			// vector from the point
