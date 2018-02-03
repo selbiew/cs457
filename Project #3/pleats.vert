@@ -12,7 +12,7 @@ out vec3 vLs;
 flat out vec3 vEf;
 out vec3 vEs;
 out vec4 pleat_Vertex;
-
+out vec3 vMC;
 vec3 eyeLightPosition = vec3( uLightX, uLightY, uLightZ );
 
 void
@@ -31,12 +31,13 @@ main( )
 	
 	vec4 ECposition = gl_ModelViewMatrix * pleat_Vertex;
 	
-	vNf = normalize( gl_NormalMatrix * normal ); 	// surface normal vector
+	vNf = normalize(gl_NormalMatrix * normal);	// surface normal vector
 	
 	vNs = vNf;
 	vLf = eyeLightPosition - ECposition.xyz; 			// vector from the point
 	vLs = vLf; 											// to the light position
 	vEf = vec3( 0., 0., 0. ) - ECposition.xyz; 			// vector from the point
 	vEs = vEf ; 										// to the eye position
+	vMC = pleat_Vertex.xyz;
 	gl_Position = gl_ModelViewProjectionMatrix * pleat_Vertex;
 }

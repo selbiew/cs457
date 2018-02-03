@@ -18,6 +18,7 @@ flat in vec3 vEf;
 in vec3 vEs;
 out vec4 fFragColor;
 in vec4 pleat_Vertex;
+in vec3 vMC;
 
 vec3
 RotateNormal( float angx, float angy, vec3 n )
@@ -62,14 +63,14 @@ main( )
 		Eye = normalize(vEs);
 	}
 	
-//	vec4 nvx = texture( Noise3, uNoiseFreq*pleat_Vertex.xyz );
-//	float angx = nvx.r + nvx.g + nvx.b + nvx.a  -  2.;
-//	angx *= uNoiseAmp;
-//  vec4 nvy = texture( Noise3, uNoiseFreq*vec3(pleat_Vertex.xy,pleat_Vertex.z+0.5) );
-//	float angy = nvy.r + nvy.g + nvy.b + nvy.a  -  2.;
-//	angy *= uNoiseAmp;
+    vec4 nvx = texture( Noise3, uNoiseFreq*vMC );
+	float angx = nvx.r + nvx.g + nvx.b + nvx.a  -  2.;
+	angx *= uNoiseAmp;
+    vec4 nvy = texture( Noise3, uNoiseFreq*vec3(vMC.xy,vMC.z+0.5) );
+	float angy = nvy.r + nvy.g + nvy.b + nvy.a  -  2.;
+	angy *= uNoiseAmp;
 	
-//	Normal = RotateNormal(angx, angy, Normal);
+	Normal = normalize(gl_NormalMatrix * RotateNormal(angx, angy, Normal));
 	
 	vec4 ambient = uKa * uColor;
 	float d = max( dot(Normal,Light), 0. );
