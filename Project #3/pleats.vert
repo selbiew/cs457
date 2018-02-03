@@ -1,5 +1,6 @@
 #version 330 compatibility
 #define PI 3.14
+
 uniform float uK;
 uniform float uP;
 uniform float uLightX, uLightY, uLightZ;
@@ -10,6 +11,7 @@ flat out vec3 vLf;
 out vec3 vLs;
 flat out vec3 vEf;
 out vec3 vEs;
+out vec4 pleat_Vertex;
 
 vec3 eyeLightPosition = vec3( uLightX, uLightY, uLightZ );
 
@@ -27,7 +29,7 @@ main( )
 	
 	vec4 pleat_Vertex = vec4(gl_Vertex.x, gl_Vertex.y, new_z, gl_Vertex.w);
 	
-	vec4 ECposition = gl_ModelViewMatrix * gl_Vertex;
+	vec4 ECposition = gl_ModelViewMatrix * pleat_Vertex;
 	
 	vNf = normalize( gl_NormalMatrix * normal ); 	// surface normal vector
 	
