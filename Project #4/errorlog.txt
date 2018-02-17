@@ -1,3 +1,3 @@
 
-0(73) : error C1008: undefined variable "tmpNormal3"
+0(31) : error C0000: syntax error, unexpected identifier, expecting ',' or ';' at token "newST"
 
