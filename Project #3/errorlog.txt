@@ -1,3 +1,3 @@
 
-0(73) : error C1008: undefined variable "tmpNormal"
+0(73) : error C1008: undefined variable "tmpNormal3"
 
