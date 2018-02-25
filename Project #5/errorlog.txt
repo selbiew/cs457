@@ -1,4 +1,6 @@
 
-0(23) : error C7011: implicit cast from "float" to "int"
-0(24) : error C7011: implicit cast from "float" to "int"
+0(63) : error C1101: ambiguous overloaded function reference "sin(int)"
+    (0) : ps lowp float sin(lowp float)
+    (0) : ps mediump float sin(mediump float)
+    (0) : float sin(float)
 
