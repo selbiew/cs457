@@ -9,11 +9,9 @@ Fragment matrix.frag
 Program  Matrix                                               	 \
         uAd <.01 .05 .5>  uBd <.01 .05 .5>                       \
         uNoiseAmp <0. 0. 1.>  uNoiseFreq <0. 1. 10.>      	 	 \
+		uSideLength <.001 .1 1.>								 \
         uAlpha <0. 1. 1.>                                        \
         uTol <0. 0. 1.>											 \
-		uUseChromaDepth <false>									 \
-		uChromaRed <-4.3, -2.65, -1. >							 \
-		uChromaBlue <-5.5, -4.25, -3.>							 \ 
 
 Color 1. .9 0
 Obj giraffe.obj
