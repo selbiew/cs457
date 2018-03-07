@@ -60,9 +60,9 @@ void main()
 	float s = vST.s;
 	float t = vST.t;
 	int ySquareNum = int(t / uSideLength);
-	float tModifier = sin(float(ySquareNum)) * Timer * uAnimationSpeed;
+	float sModifier = sin(float(ySquareNum)) * Timer * uAnimationSpeed;
 
-	if(colorFragment(mod(t, uSideLength), mod(s+tModifier, uSideLength))) {
+	if(colorFragment(mod(t, uSideLength), mod(s+sModifier, uSideLength))) {
 		gl_FragColor = vGreen;
 	}
 	else {
