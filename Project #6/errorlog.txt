@@ -1,3 +1,3 @@
 
-0(61) : error C1008: undefined variable "uNormalMatrix"
+0(20) : error C1008: undefined variable "uNormalMatrix"
 

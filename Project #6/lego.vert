@@ -1,8 +1,9 @@
 #version 330 compatibility
 
-out vec3 vNormal[3];
+out vec3 vNormal;
 
 void main( )
 {
+	vNormal = gl_Normal;
 	gl_Position = gl_Vertex;
 }
