@@ -7,16 +7,18 @@ layout( triangle_strip, max_vertices=204 ) out;
 
 uniform int uLevel;
 uniform float uRadius;
+in vec3 vNormal[3];
 out float gLightIntensity;
 const vec3 LIGHTPOS = vec3( 0., 10., 0. );
 vec3 V0, V01, V02;
+vec3 N0, N01, N02;
 
 void
 ProduceVertex( float s, float t )
 {
 	vec3 v = V0 + s*V01 + t*V02;
 	v = normalize(v);
-	vec3 n = v;
+	vec3 n = N0 + s*N01 + t*N02;
 	vec3 tnorm = normalize( gl_NormalMatrix * n ); // the transformed normal
 	vec4 ECposition = gl_ModelViewMatrix * vec4( (uRadius*v), 1. );
 	gLightIntensity = abs( dot( normalize(LIGHTPOS - ECposition.xyz), tnorm ) );
@@ -30,6 +32,11 @@ main( )
 	V01 = ( gl_PositionIn[1] - gl_PositionIn[0] ).xyz;
 	V02 = ( gl_PositionIn[2] - gl_PositionIn[0] ).xyz;
 	V0 = gl_PositionIn[0].xyz;
+	
+	N01 = ( vNormal[1] - vNormal[0] ).xyz;
+	N02 = ( vNormal[2] - vNormal[0] ).xyz;
+	N0 = vNormal[0].xyz;
+	
 	int numLayers = 1 << uLevel;
 	float dt = 1. / float( numLayers );
 	float t_top = 1.;
