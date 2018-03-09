@@ -6,21 +6,46 @@ layout( triangles ) in;
 layout( triangle_strip, max_vertices=204 ) out;
 
 uniform int uLevel;
-uniform float uRadius;
+uniform float uQuantize;
+
 in vec3 vNormal[3];
 out float gLightIntensity;
 const vec3 LIGHTPOS = vec3( 0., 10., 0. );
 vec3 V0, V01, V02;
 vec3 N0, N01, N02;
 
+float Quantize(float);
+vec3 QuantizeVec3(vec3);
+void ProduceVertex(float, float);
+
+float
+Quantize( float f )
+{
+	f *= uQuantize;
+	f += .5;		// round-off
+	int fi = int( f );
+	f = float( fi ) / uQuantize;
+	return f;
+}
+
+vec3
+QuantizeVec3( vec3 v )
+{
+	vec3 vv;
+	vv.x = Quantize( v.x );
+	vv.y = Quantize( v.y );
+	vv.z = Quantize( v.z );
+	return vv;
+}
+
 void
 ProduceVertex( float s, float t )
 {
 	vec3 v = V0 + s*V01 + t*V02;
-	v = normalize(v);
 	vec3 n = N0 + s*N01 + t*N02;
 	vec3 tnorm = normalize( gl_NormalMatrix * n ); // the transformed normal
-	vec4 ECposition = gl_ModelViewMatrix * vec4( (uRadius*v), 1. );
+	
+	vec4 ECposition = gl_ModelViewMatrix * vec4(v, 1.);
 	gLightIntensity = abs( dot( normalize(LIGHTPOS - ECposition.xyz), tnorm ) );
 	gl_Position = gl_ProjectionMatrix * ECposition;
 	EmitVertex( );

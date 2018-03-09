@@ -1,3 +1,4 @@
 
-0(20) : error C1008: undefined variable "uNormalMatrix"
+0(22) : error C1008: undefined variable "uQuantize"
+0(25) : error C1008: undefined variable "uQuantize"
 
