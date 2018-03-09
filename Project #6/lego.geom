@@ -49,9 +49,13 @@ ProduceVertex( float s, float t )
 	vec4 vPosition = vec4(v, 1.);
 	vec4 ECposition = gl_ModelViewMatrix * vec4(v, 1.);
 	
+	if(!uModelCoords)
+		vPosition = gl_ModelViewMatrix * vPosition;
+		
+	vPosition.xyz = QuantizeVec3(vPosition.xyz);
+	
 	if(uModelCoords)
 		vPosition = gl_ModelViewMatrix * vPosition;
-	vPosition.xyz = QuantizeVec3(vPosition.xyz);
 	
 	gLightIntensity = abs( dot( normalize(LIGHTPOS - ECposition.xyz), tnorm ) );
 	
