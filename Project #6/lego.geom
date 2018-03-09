@@ -11,7 +11,7 @@ uniform bool uModelCoords;
 
 in vec3 vNormal[3];
 out float gLightIntensity;
-const vec3 LIGHTPOS = vec3( 0., 10., 0. );
+const vec3 LIGHTPOS = vec3( 5., 5., 5. );
 vec3 V0, V01, V02;
 vec3 N0, N01, N02;
 
