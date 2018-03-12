@@ -1,0 +1,15 @@
+##OpenGL GLIB
+
+Perspective 70
+LookAt 0 0 3  0 0 0  0 1 0
+
+Vertex		ocean.vert
+Fragment	ocean.frag
+Program		Ocean										\
+				uK <0. .1 .5>							\
+				uP <0. 1.57 3.14>						\
+                uNoiseAmp <0. 0. 5.>					\
+                uNoiseFreq <0. 1. 10.>					\
+                uColor {1. .7 0. 1.}                    
+
+Box  [1.  1.  1.]
