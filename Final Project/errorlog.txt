@@ -1,3 +1,4 @@
 
-0(13) : error C1008: undefined variable "gLightIntensity"
+0(19) : error C1035: assignment of incompatible types
+0(21) : error C1035: assignment of incompatible types
 

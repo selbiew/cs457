@@ -10,6 +10,6 @@ Program		Ocean										\
 				uP <0. 1.57 3.14>						\
                 uNoiseAmp <0. 0. 5.>					\
                 uNoiseFreq <0. 1. 10.>					\
-                uColor {1. .7 0. 1.}                    
+				uOceanFloorHeight <-1. 0. 1.>
 
 Box  4.  2.  4.
