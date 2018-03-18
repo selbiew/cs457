@@ -1,4 +1,5 @@
 
-0(44) : error C1008: undefined variable "fFragColor"
-0(46) : error C1008: undefined variable "fFragColor"
+0(31) : error C1008: undefined variable "uFloorFreq"
+0(31) : error C1008: undefined variable "vMC"
+0(32) : error C1008: undefined variable "uFloorAmp"
 

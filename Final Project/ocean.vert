@@ -9,6 +9,8 @@ flat out vec3 vEf;
 out vec3 vEs;
 vec3 eyeLightPosition = vec3( uLightX, uLightY, uLightZ );
 
+out vec3 vModelCoords;
+
 void
 main( )
 {
@@ -19,5 +21,7 @@ main( )
 	vLs = vLf; // to the light position
 	vEf = vec3( 0., 0., 0. ) - ECposition.xyz; // vector from the point
 	vEs = vEf ; // to the eye position
+	
+	vModelCoords = gl_Vertex.xyz;
 	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
 }

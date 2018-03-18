@@ -6,14 +6,16 @@ LookAt 3 5 3  0 0 0  0 1 0
 Vertex		ocean.vert
 Fragment	ocean.frag
 Program		Ocean							\
-	uKa <0. 0.1 1.0>                        \
-	uKd <0. 0.6 1.0>                        \
+	uKa <0. 0.5 1.0>                        \
+	uKd <0. 0.5 1.0>                        \
 	uKs <0. 0.3 1.0>                        \
 	uShininess <1. 10. 1000.>               \
+	uFloorAmp <0. 0.4 0.8>					\
+    uFloorFreq <0.2 0.3 0.5>				\
 	uLightX <-20. 5. 20.>                   \
 	uLightY <-20. 10. 20.>                  \
 	uLightZ <-20. 20. 20.>                  \
-	uColor {1. .7 0. 1.}                    \
+	uWaterHeight <-1. 0. 1.>				\
 	uSpecularColor {1. 1. 1. 1.}
 
 Box 4. 2. 4.
