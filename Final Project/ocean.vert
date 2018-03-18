@@ -1,6 +1,10 @@
 #version 330 compatibility
 
 uniform float uLightX, uLightY, uLightZ;
+uniform float uWaveFreq;
+uniform float uWaveAmp;
+uniform float uWaterHeight;
+
 flat out vec3 vNf;
 out vec3 vNs;
 flat out vec3 vLf;
@@ -22,6 +26,9 @@ main( )
 	vEf = vec3( 0., 0., 0. ) - ECposition.xyz; // vector from the point
 	vEs = vEf ; // to the eye position
 	
-	vModelCoords = gl_Vertex.xyz;
-	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+	vec4 pertVert = gl_Vertex;
+	if(pertVert.y > uWaterHeight)
+		pertVert.y += uWaveAmp * sin(pertVert.x*pertVert.z*uWaveFreq);
+	vModelCoords = pertVert.xyz;
+	gl_Position = gl_ModelViewProjectionMatrix * pertVert;
 }
