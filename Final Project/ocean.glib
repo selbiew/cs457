@@ -12,13 +12,19 @@ Program		Ocean							\
 	uShininess <1. 10. 1000.>               \
 	uFloorAmp <0. 0.4 0.8>					\
     uFloorFreq <0.2 0.3 0.5>				\
-	uWaveAmp <0. 0.1 0.4>					\
+	uRippleAmp <0. 0.4 0.8>					\
+    uRippleFreq <0.2 4.5 20.0>				\
+	uWaveAmp <0. 0.4 2.4>					\
     uWaveFreq <0.2 2. 10.>					\
 	uLightX <-20. 5. 20.>                   \
 	uLightY <-20. 10. 20.>                  \
 	uLightZ <-20. 20. 20.>                  \
 	uWaterHeight <0. 0.5 1.>				\
-	uSpecularColor {1. 1. 1. 1.}
+	uSpecularColor {1. 1. 1. 1.}			\
+	uIsWaves <true>							\
+	uAnimate <false>
 
-
-Cylinder 2 1	
+#Teapot
+Sphere 5.
+#Cylinder 2 1	
+#PointCloud 100 100 100

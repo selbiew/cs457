@@ -20,7 +20,7 @@ in vec3 vLs;
 flat in vec3 vEf;
 in vec3 vEs;
 
-in vec3 vModelCoords;
+in float isWater;
 
 void
 main( )
@@ -29,14 +29,8 @@ main( )
 	vec3 Light;
 	vec3 Eye;
 	vec4 fragColor = SAND;
-	
-	vec4 nvx = texture( Noise3, uFloorFreq*vModelCoords );
-	float floor_noise = (nvx.r + nvx.g + nvx.b + nvx.a - 2.) * uFloorAmp;
-	
-	if(vModelCoords.y >= uWaterHeight + floor_noise)
+	if(isWater > 0.5)
 		fragColor = WATER;
-	
-
 	
 	if( uFlat )
 	{
@@ -57,8 +51,8 @@ main( )
 	float s = 0.;
 	if( dot(Normal,Light) > 0. ) // only do specular if the light can see the point
 	{
-	vec3 ref = normalize( 2. * Normal * dot(Normal,Light) - Light );
-	s = pow( max( dot(Eye,ref),0. ), uShininess );
+		vec3 ref = normalize( 2. * Normal * dot(Normal,Light) - Light );
+		s = pow( max( dot(Eye,ref),0. ), uShininess );
 	}
 	vec4 specular = uKs * s * uSpecularColor;
 	vec4 fFragColor = vec4( ambient.rgb + diffuse.rgb + specular.rgb, fragColor.w );
